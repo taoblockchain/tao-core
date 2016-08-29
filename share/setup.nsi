@@ -7,7 +7,7 @@ SetCompressor /SOLID lzma
 !define REGKEY "SOFTWARE\$(^Name)"
 !define VERSION 0.9.0
 !define COMPANY "Tao project"
-!define URL http://www.tao.ru/
+!define URL http://tao.network/
 
 # MUI Symbol Definitions
 !define MUI_ICON "../share/pixmaps/tao.ico"
@@ -66,13 +66,13 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    #File ../release/tao-qt.exe
+    File ../release/tao-qt.exe
     File /oname=license.txt ../COPYING
-    File /oname=readme.txt ../doc/README_windows.txt
+    #File /oname=readme.txt ../doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File ../src/tao-daemon.exe
-    SetOutPath $INSTDIR\src
-    File /r /x *.exe /x *.o ../src\*.*
+    #File ../src/tao-daemon.exe
+    #SetOutPath $INSTDIR\src
+    #File /r /x *.exe /x *.o ../src\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 
