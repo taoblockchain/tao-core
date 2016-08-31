@@ -283,17 +283,17 @@ public:
     uint64_t GetStakeWeight() const;
     bool CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int64_t nSearchInterval, int64_t nFees, CTransaction& txNew, CKey& key);
 
-    std::string SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee=false, const std::string& txData=NULL);
-    std::string SendMoneyToDestination(const CTxDestination &address, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee=false, const std::string& txData=NULL);
+    std::string SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee=false, const std::string& txData="");
+    std::string SendMoneyToDestination(const CTxDestination &address, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee=false, const std::string& txData="");
 
     bool NewEncapsulatedAddress(std::string& sError, std::string& sLabel, CEncapsulatedAddress& sxAddr);
     bool AddEncapsulatedAddress(CEncapsulatedAddress& sxAddr);
     bool UnlockEncapsulatedAddresses(const CKeyingMaterial& vMasterKeyIn);
     bool UpdateEncapsulatedAddress(std::string &addr, std::string &label, bool addIfNotExist);
 
-    bool CreateEncapsulatedTransaction(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t>& P, std::vector<uint8_t>& narr, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl=NULL, const std::string& txData=NULL);
-    std::string SendEncapsulatedMoney(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t>& P, std::vector<uint8_t>& narr, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee=false, const std::string& txData=NULL);
-    bool SendEncapsulatedMoneyToDestination(CEncapsulatedAddress& sxAddress, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, std::string& sError, bool fAskFee=false, const std::string& txData=NULL);
+    bool CreateEncapsulatedTransaction(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t>& P, std::vector<uint8_t>& narr, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl=NULL, const std::string& txData="");
+    std::string SendEncapsulatedMoney(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t>& P, std::vector<uint8_t>& narr, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee=false, const std::string& txData="");
+    bool SendEncapsulatedMoneyToDestination(CEncapsulatedAddress& sxAddress, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, std::string& sError, bool fAskFee=false, const std::string& txData="");
     bool FindEncapsulatedTransactions(const CTransaction& tx, mapValue_t& mapNarr);
 
     std::string PrepareDarksendDenominate(int minRounds, int maxRounds);
