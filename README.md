@@ -13,8 +13,7 @@ with no central authority: managing transactions, execution of contracts, and
 issuing money are carried out collectively by the network. Tao Core is the name of 
 open source software which enables the use of this protocol.
 
-For more information, as well as an immediately useable, binary version of
-the Tao Core software, see https://tao.network/index.html#download, or read the
+For more information, see https://tao.network/index.html, or read the
 [original whitepaper](https://tao.network/Welcome%20to%20Tao%20v1.4.pdf).
 
 License
