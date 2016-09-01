@@ -189,9 +189,6 @@ ifeq (${USE_WALLET}, 1)
 endif
 
 all: taod
-	-mkdir obj/support
-	-mkdir obj/crypto
-	-mkdir obj/intellitx
 
 # build secp256k1
 DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include)
@@ -217,6 +214,9 @@ version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
 
 obj/%.o: %.cpp
+	@mkdir -p obj/support
+	@mkdir -p obj/crypto
+	@mkdir -p obj/intellitx
 	$(CXX) -c $(xCXXFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
 	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
 	  sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \

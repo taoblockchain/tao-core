@@ -143,9 +143,6 @@ ifeq (${USE_WALLET}, 1)
 endif
 
 all: tao-daemon.exe
-    -mkdir obj/support
-    -mkdir obj/crypto
-    -mkdir obj/intellitx
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -156,6 +153,9 @@ leveldb/libleveldb.a:
 obj/txdb-leveldb.o: leveldb/libleveldb.a
 
 obj/%.o: %.cpp $(HEADERS)
+    @mkdir -p obj/support
+    @mkdir -p obj/crypto
+    @mkdir -p obj/intellitx
 	g++ -c $(CFLAGS) -o $@ $<
 
 obj/%.o: %.c $(HEADERS)
