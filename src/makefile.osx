@@ -171,6 +171,9 @@ endif
 endif
 
 all: taod
+	-mkdir obj/support
+	-mkdir obj/crypto
+	-mkdir obj/intellitx
 
 # build secp256k1
 DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include)
@@ -217,8 +220,8 @@ clean:
 	-rm -f obj/*.o
 	-rm -f obj/*.P
 	-rm -f obj/build.h
-	-rm -f obj/crypto/*.o
-	-rm -f obj/intellitx/*.o
-	-rm -f ob/support/*.o
+	-rm -rf obj/support
+	-rm -rf obj/crypto
+	-rm -rf obj/intellitx
 	-rm -f secp256k1/src/*.o
 FORCE:

@@ -143,6 +143,9 @@ ifeq (${USE_WALLET}, 1)
 endif
 
 all: tao-daemon.exe
+    -mkdir obj/support
+    -mkdir obj/crypto
+    -mkdir obj/intellitx
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -165,6 +168,9 @@ clean:
 	-rm -f obj/*.o
 	-rm -f taod.exe
 	-rm -f obj/build.h
+    -rm -rf obj/support
+    -rm -rf obj/crypto
+    -rm -rf obj/intellitx
 	cd leveldb && TARGET_OS=NATIVE_WINDOWS $(MAKE) clean && cd ..
 
 FORCE:
