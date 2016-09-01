@@ -242,5 +242,9 @@ clean:
 	-rm -rf obj/crypto
 	-rm -rf obj/intellitx
 	-rm -f secp256k1/src/*.o
+	-rm -f secp256k1/Makefile
+	-rm -f secp256k1/aclocal.m4
+	-rm -f secp256k1/configure
+	-rm -f secp256k1/*.pc
 
 FORCE:
