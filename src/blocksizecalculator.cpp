@@ -118,7 +118,7 @@ inline int BlockSizeCalculator::GetBlockSize(CBlockIndex *pblockindex) {
 
 	const CDiskBlockPos& pos = pblockindex->GetBlockPos();
 
-	CAutoFile filein(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
+	CAutoFile filein(OpenBlockFile(pos, false), SER_DISK, CLIENT_VERSION);
 	FILE* blockFile = filein.release();
 	long int filePos = ftell(blockFile);
 	fseek(blockFile, filePos - sizeof(uint32_t), SEEK_SET);
