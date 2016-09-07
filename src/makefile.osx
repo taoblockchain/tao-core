@@ -9,24 +9,25 @@
 CXX=clang++
 C=clang
 DEPSDIR=/usr/local
+DEPSDIR2=/Users/bryceweiner/coins/deps
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
- -I"$(DEPSDIR)/Cellar/boost/HEAD/include" \
+ -I"$(DEPSDIR2)/boost_1_57_0" \
  -I"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/include" \
- -I"/Users/bryceweiner/coins/deps/openssl-1.0.2h/include" \
+ -I"$(DEPSDIR2)/openssl-1.0.1t/include" \
  -I"$(DEPSDIR)/Cellar/gmp/6.0.0a/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
- -L"$(DEPSDIR)/Cellar/boost/HEAD/lib" \
+ -L"$(DEPSDIR2)/boost_1_57_0/stage/lib" \
  -L"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib" \
- -L"/Users/bryceweiner/coins/deps/openssl-1.0.2h" \
+ -L"$(DEPSDIR2)/openssl-1.0.1t" \
  -L"$(DEPSDIR)/Cellar/gmp/6.0.0a/lib"
 
-USE_UPNP:=1
+USE_UPNP:=0
 USE_WALLET:=1
 
 LIBS= -dead_strip
@@ -34,14 +35,14 @@ LIBS= -dead_strip
 ifdef STATIC
 # Build STATIC if you are redistributing the tao-daemon binary
 LIBS += \
- $(DEPSDIR)/lib/db48/libdb_cxx-4.8.a \
- $(DEPSDIR)/lib/libboost_system.a \
- $(DEPSDIR)/lib/libboost_filesystem.a \
- $(DEPSDIR)/lib/libboost_program_options.a \
- $(DEPSDIR)/lib/libboost_thread-mt.a \
- $(DEPSDIR)/lib/libssl.a \
- $(DEPSDIR)/lib/libcrypto.a \
- $(DEPSDIR)/lib/libgmp.a \
+ $(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib/libdb_cxx-4.8.a \
+ $(DEPSDIR2)/boost_1_57_0/stage/lib/libboost_system.a \
+ $(DEPSDIR2)/boost_1_57_0/stage/lib/libboost_filesystem.a \
+ $(DEPSDIR2)/boost_1_57_0/stage/lib/libboost_program_options.a \
+ $(DEPSDIR2)/boost_1_57_0/stage/lib/libboost_thread-mt.a \
+ $(DEPSDIR2)/openssl-1.0.1t/libssl.a \
+ $(DEPSDIR2)/openssl-1.0.1t/libcrypto.a \
+ $(DEPSDIR)/Cellar/gmp/6.0.0a/lib/libgmp.a \
  -lz
 else
 LIBS += \
@@ -164,7 +165,7 @@ endif
 ifneq (${USE_UPNP}, -)
 	DEFS += -DUSE_UPNP=$(USE_UPNP)
 ifdef STATIC
-	LIBS += $(DEPSDIR)/lib/libminiupnpc.a
+	LIBS += $(DEPSDIR2)/miniupnpc-1.9.20160209/libminiupnpc.a
 else
 	LIBS += -lminiupnpc
 endif
