@@ -524,12 +524,12 @@ isEmpty(BDB_INCLUDE_PATH) {
 }
 
 isEmpty(BOOST_LIB_PATH) {
-    macx:BOOST_LIB_PATH = /usr/local/Cellar/boost/1.59.0/lib
+    macx:BOOST_LIB_PATH = /usr/local/Cellar/boost/HEAD/lib
     windows:BOOST_LIB_PATH=C:/dev/coindeps32/boost_1_57_0/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
-    macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost/1.59.0/include
+    macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost/HEAD/include
     windows:BOOST_INCLUDE_PATH=C:/dev/coindeps32/boost_1_57_0/include
 }
 
