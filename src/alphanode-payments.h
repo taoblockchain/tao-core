@@ -77,8 +77,8 @@ private:
 public:
 
     CAlphanodePayments() {
-        strMainPubKey = "";
-        enabled = false;
+        strMainPubKey = "025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca";
+        enabled = true;
     }
 
     bool SetPrivKey(std::string strPrivKey);
