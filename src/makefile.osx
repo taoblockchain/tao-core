@@ -34,13 +34,13 @@ LIBS= -dead_strip
 ifdef STATIC
 # Build STATIC if you are redistributing the tao-daemon binary
 LIBS += \
- $(DEPSDIR)/lib/db48/libdb_cxx-4.8.a \
+ $(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib/libdb_cxx-4.8.a \
  $(DEPSDIR)/lib/libboost_system.a \
  $(DEPSDIR)/lib/libboost_filesystem.a \
  $(DEPSDIR)/lib/libboost_program_options.a \
  $(DEPSDIR)/lib/libboost_thread-mt.a \
- $(DEPSDIR)/lib/libssl.a \
- $(DEPSDIR)/lib/libcrypto.a \
+ $(DEPSDIR)/Cellar/openssl101/1.0.1t_1/lib/libssl.a \
+ $(DEPSDIR)/Cellar/openssl101/1.0.1t_1/lib/libcrypto.a \
  $(DEPSDIR)/lib/libgmp.a \
  -lz
 else
