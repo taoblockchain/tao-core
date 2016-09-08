@@ -16,14 +16,14 @@ INCLUDEPATHS= \
  -I"$(DEPSDIR)/include" \
  -I"$(DEPSDIR)/Cellar/boost/HEAD/include" \
  -I"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/include" \
- -I"$(DEPSDIR)/Cellar/openssl-1.0.1t/include" \
+ -I"$(DEPSDIR)/Cellar/openssl101/1.0.1t_1/include" \
  -I"$(DEPSDIR)/Cellar/gmp/6.0.0a/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
  -L"$(DEPSDIR)/Cellar/boost/HEAD/lib" \
  -L"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib" \
- -L"$(DEPSDIR)/Cellar/openssl-1.0.1t" \
+ -L"$(DEPSDIR)/Cellar/openssl101/1.0.1t_1/lib" \
  -L"$(DEPSDIR)/Cellar/gmp/6.0.0a/lib"
 
 USE_UPNP:=1
