@@ -174,8 +174,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
         // Priority order to process transactions
         list<COrphan> vOrphan; // list memory doesn't move
         map<uint256, vector<COrphan*> > mapDependers;
-        if (fDebug)
-            LogPrintf("CreateNewBlock(): Adding mempool transactions.\n");
+        //if (fDebug)
+        //    LogPrintf("CreateNewBlock(): Adding mempool transactions.\n");
 
         // This vector will be sorted into a priority queue:
         vector<TxPriority> vecPriority;
@@ -185,8 +185,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             CTransaction& tx = (*mi).second;
             if (tx.IsCoinBase() || tx.IsCoinStake() || !IsFinalTx(tx, nHeight))
                 continue;
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): Validating transaction %s\n", tx.GetHash().ToString());
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): Validating transaction %s\n", tx.GetHash().ToString());
             COrphan* porphan = NULL;
             double dPriority = 0;
             int64_t nTotalIn = 0;
@@ -246,8 +246,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
                 porphan->dFeePerKb = dFeePerKb;
             }
             else
-                if (fDebug)
-                    LogPrintf("CreateNewBlock(): Adding %s to priority vector.\n", tx.GetHash().ToString());
+                //if (fDebug)
+                //    LogPrintf("CreateNewBlock(): Adding %s to priority vector.\n", tx.GetHash().ToString());
                 vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(*mi).second));
         }
 
@@ -260,6 +260,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
         TxPriorityCompare comparer(fSortedByFee);
         std::make_heap(vecPriority.begin(), vecPriority.end(), comparer);
+        /*
         if (vecPriority.empty())
         {
             if (fDebug)
@@ -270,6 +271,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             if (fDebug)
                 LogPrintf("CreateNewBlock(): %d transactions in priority vector.\n",vecPriority.size());
         }
+        */
         while (!vecPriority.empty())
         {
             // Take highest priority transaction off the priority queue:
@@ -287,27 +289,27 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
                 LogPrintf("CreateNewBlock(): Block Size Excceeded: BlockMaxSize=%d, BlockSize=%d, TXSize=%d\n",nBlockMaxSize, nBlockSize,nTxSize);
                 continue;
             }
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): Block Size OK\n");
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): Block Size OK\n");
 
             // Legacy limits on sigOps:
             unsigned int nTxSigOps = GetLegacySigOpCount(tx);
             if (nBlockSigOps + nTxSigOps >= maxBlockSigops)
                 continue;
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): Legacy SigOps OK\n");
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): Legacy SigOps OK\n");
 
             // Timestamp limit
             if (tx.nTime > GetAdjustedTime() || (fProofOfStake && tx.nTime > pblock->vtx[0].nTime))
                 continue;
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): Inside timestamp limit\n");
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): Inside timestamp limit\n");
 
             // Skip free transactions if we're past the minimum block size:
             if (fSortedByFee && (dFeePerKb < nMinTxFee) && (nBlockSize + nTxSize >= nBlockMinSize))
                 continue;
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): Including free TX because blocks are not full\n");
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): Including free TX because blocks are not full\n");
 
             // Prioritize by fee once past the priority size or we run out of high-priority
             // transactions:
@@ -326,16 +328,16 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             bool fInvalid;
             if (!tx.FetchInputs(txdb, mapTestPoolTmp, false, true, mapInputs, fInvalid))
                 continue;
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): FetchInputs OK\n");
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): FetchInputs OK\n");
 
             int64_t nTxFees = tx.GetValueIn(mapInputs)-tx.GetValueOut();
 
             nTxSigOps += GetP2SHSigOpCount(tx, mapInputs);
             if (nBlockSigOps + nTxSigOps >= maxStandardTxSigops)
                 continue;
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): SigOps OK\n");
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): SigOps OK\n");
 
             // Note that flags: we don't want to set mempool/IsStandard()
             // policy here, but we still have to ensure that the block we
