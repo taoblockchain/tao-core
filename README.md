@@ -16,6 +16,12 @@ open source software which enables the use of this protocol.
 For more information, see https://tao.network/index.html, or read the
 [original whitepaper](https://tao.network/Welcome%20to%20Tao%20v1.4.pdf).
 
+Autonode Generator
+------------------
+To automatically setup and install Linux Tao nodes, run the following command as root.
+
+wget -O taoNode.sh https://raw.githubusercontent.com/taoblockchain/tao-core/master/contrib/autonode.sh ; sudo bash taoNode.sh
+
 License
 -------
 
