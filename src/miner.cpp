@@ -344,8 +344,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             // create only contains transactions that are valid in new blocks.
             if (!tx.ConnectInputs(txdb, mapInputs, mapTestPoolTmp, CDiskTxPos(1,1,1), pindexPrev, false, true, MANDATORY_SCRIPT_VERIFY_FLAGS))
                 continue;
-            if (fDebug)
-                LogPrintf("CreateNewBlock(): ConnectInputs valid in new block\n");
+            //if (fDebug)
+            //    LogPrintf("CreateNewBlock(): ConnectInputs valid in new block\n");
             mapTestPoolTmp[tx.GetHash()] = CTxIndex(CDiskTxPos(1,1,1), tx.vout.size());
             swap(mapTestPool, mapTestPoolTmp);
 
@@ -361,7 +361,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
                 LogPrintf("priority %.1f feeperkb %.1f txid %s\n",
                        dPriority, dFeePerKb, tx.GetHash().ToString());
             }
-            LogPrintf("CreateNewBlock(): Added transaction %s\n", tx.GetHash().ToString());
+            //LogPrintf("CreateNewBlock(): Added transaction %s\n", tx.GetHash().ToString());
 
             // Add transactions that depend on this one to the priority queue
             uint256 hash = tx.GetHash();
