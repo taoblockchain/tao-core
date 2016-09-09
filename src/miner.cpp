@@ -602,8 +602,8 @@ void ThreadStakeMiner(CWallet *pwallet)
         auto_ptr<CBlock> pblock(CreateNewBlock(reservekey, true, &nFees));
         if (!pblock.get())
             return;
-        if (fDebug)
-            LogPrintf("Next stake block:\n%s\n",pblock.get()->ToString());
+        //if (fDebug)
+        //    LogPrintf("Next stake block:\n%s\n",pblock.get()->ToString());
         // Trying to sign a block
         if (pblock->SignBlock(*pwallet, nFees))
         {
