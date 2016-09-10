@@ -11,7 +11,6 @@
 using namespace std;
 
 extern bool IsConfirmedInNPrevBlocks(const CTxIndex& txindex, const CBlockIndex* pindexFrom, int nMaxDepth, int& nActualDepth);
-
 // Get time weight
 int64_t GetWeight(int64_t nIntervalBeginning, int64_t nIntervalEnd)
 {
@@ -19,7 +18,7 @@ int64_t GetWeight(int64_t nIntervalBeginning, int64_t nIntervalEnd)
     // this change increases active coins participating the hash and helps
     // to secure the network when proof-of-stake difficulty is low
 
-    return nIntervalEnd - nIntervalBeginning - Params().StakeMinAge();
+    return nIntervalEnd - nIntervalBeginning - Params().StakeMinAge(GetCurrentBlockHeight());
 }
 
 // Get the last stake modifier and its generation time from a given block
@@ -211,7 +210,7 @@ bool CheckStakeKernelHash(CBlockIndex* pindexPrev, unsigned int nBits, unsigned 
     if (nTimeTx < txPrev.nTime)  // Transaction timestamp violation
         return error("CheckStakeKernelHash() : nTime violation");
 
-    if (nTimeBlockFrom + Params().StakeMinAge() > nTimeTx) // Min age requirement
+    if (nTimeBlockFrom + Params().StakeMinAge(pindexPrev->nHeight) > nTimeTx) // Min age requirement
         return error("CheckStakeKernelHash() : min age violation");
 
     // Base target

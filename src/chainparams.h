@@ -78,12 +78,21 @@ public:
     int64_t DarkSendPoolMax() const { return nDarkSendPoolMax; }
     int BaseProofOfStakeReward() const { return nBaseProofOfStakeReward; }
     std::string DarksendPoolDummyAddress() const { return strDarksendPoolDummyAddress; }
-    unsigned int StakeMinAge() const { return nStakeMinAge; }
     int CoinbaseMaturity() const { return nCoinbaseMaturity; }
     int MinStakeConfirmations() const { return nMinStakeConfirmations; }
     int64_t AlphaNodeCollateral() const { return nAlphaNodeCollateral; }
     int BasePOWReward() const { return nBasePOWReward; }
     int POWRewardBlock() const { return nPOWRewardBlock; }
+    unsigned int StakeMinAge(int nHeight = -1) const { 
+        if (nHeight >= 0) 
+            if (nHeight >= POWRewardBlock()/2){
+                return nStakeMinAge * 84;
+            } else {
+                return nStakeMinAge;
+            }
+        else
+                return nStakeMinAge;
+    }
 
     //std::string SporkKey() const { return strSporkKey; }
     //std::string AlphanodePaymentPubKey() const { return strAlphanodePaymentsPubKey; }

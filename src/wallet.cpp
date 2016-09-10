@@ -1744,7 +1744,7 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
             else
             {
             // Filtering by tx timestamp instead of block timestamp may give false positives but never false negatives
-            if (pcoin->nTime + Params().StakeMinAge() > nSpendTime)
+            if (pcoin->nTime + Params().StakeMinAge(GetCurrentBlockHeight()) > nSpendTime)
                continue;
             }
 
@@ -3479,7 +3479,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             if (pcoin.first->vout[pcoin.second].nValue >= GetStakeCombineThreshold())
                 continue;
             // Do not add input that is still too young
-            if (nTimeWeight < Params().StakeMinAge())
+            if (nTimeWeight < Params().StakeMinAge(GetCurrentBlockHeight()))
                 continue;
 
             txNew.vin.push_back(CTxIn(pcoin.first->GetHash(), pcoin.second));

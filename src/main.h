@@ -80,7 +80,6 @@ inline int64_t FutureDrift(int64_t nTime) { return nTime + DRIFT; }
 /** "reject" message codes **/
 static const unsigned char REJECT_INVALID = 0x10;
 
-
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
 extern CTxMemPool mempool;
@@ -191,6 +190,7 @@ struct CNodeStateStats {
     int nMisbehavior;
 };
 
+int GetCurrentBlockHeight();
 
 /** Position on disk for a particular transaction. */
 class CDiskTxPos

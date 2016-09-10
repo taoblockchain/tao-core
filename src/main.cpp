@@ -32,6 +32,8 @@ using namespace boost;
 //
 // Global state
 //
+int nCurrentBlockHeight = 0;
+int GetCurrentBlockHeight(){ return nCurrentBlockHeight; }
 
 CCriticalSection cs_setpwalletRegistered;
 set<CWallet*> setpwalletRegistered;
@@ -2080,7 +2082,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
 
         mapQueuedChanges[hashTx] = CTxIndex(posThisTx, tx.vout.size());
     }
-
+    nCurrentBlockHeight = pindex->nHeight;   
     if (IsProofOfWork())
     {
         int64_t nReward = GetProofOfWorkReward(pindex->nHeight, nFees);

@@ -143,6 +143,12 @@ ifeq (${USE_WALLET}, 1)
 endif
 
 all: tao-daemon.exe
+# Uncomment for MXE builds
+# build secp256k1
+#DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include)
+#secp256k1/src/libsecp256k1_la-secp256k1.o:
+#    @echo "Building Secp256k1 ..."; cd secp256k1; chmod 755 *; ./autogen.sh; ./configure --enable-module-recovery --host=i686-w64-mingw32.static; make; cd ..;
+#tao-daemon.exe: secp256k1/src/libsecp256k1_la-secp256k1.o
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -171,6 +177,11 @@ clean:
     -rm -rf obj/support
     -rm -rf obj/crypto
     -rm -rf obj/intellitx
+    -rm -f secp256k1/src/*.o
+    -rm -f secp256k1/Makefile
+    -rm -f secp256k1/aclocal.m4
+    -rm -f secp256k1/configure
+    -rm -f secp256k1/*.pc
 	cd leveldb && TARGET_OS=NATIVE_WINDOWS $(MAKE) clean && cd ..
 
 FORCE:
