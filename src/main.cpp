@@ -1478,7 +1478,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 // miner's coin stake reward
 int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
 {
-    int64_t nSubsidy = nCoinAge * Params().BaseProofOfStakeReward() / 365 / COIN;
+    int64_t nSubsidy = nCoinAge * Params().BaseProofOfStakeReward(GetCurrentBlockHeight()) / 365 / COIN;
     return nSubsidy + nFees;
 }
 

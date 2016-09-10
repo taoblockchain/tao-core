@@ -76,7 +76,17 @@ public:
     int TargetBlockSpacing() const { return nTargetBlockSpacing; }
     int64_t DarkSendCollateral() const { return nDarkSendCollateral; }
     int64_t DarkSendPoolMax() const { return nDarkSendPoolMax; }
-    int BaseProofOfStakeReward() const { return nBaseProofOfStakeReward; }
+    int BaseProofOfStakeReward(int nHeight = -1) const {
+        if (nHeight >= 0) 
+            if (nHeight >= POWRewardBlock()/2){
+                return nBaseProofOfStakeReward + (0.5209 * CENT);
+            } else {
+                return nBaseProofOfStakeReward;
+            }
+        else
+                return nBaseProofOfStakeReward;
+        return nBaseProofOfStakeReward; 
+    }
     std::string DarksendPoolDummyAddress() const { return strDarksendPoolDummyAddress; }
     int CoinbaseMaturity() const { return nCoinbaseMaturity; }
     int MinStakeConfirmations() const { return nMinStakeConfirmations; }
