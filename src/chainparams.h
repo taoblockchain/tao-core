@@ -96,7 +96,7 @@ public:
     unsigned int StakeMinAge(int nHeight = -1) const { 
         if (nHeight >= 0) 
             if (nHeight >= POWRewardBlock()/2){
-                return nStakeMinAge * 84;
+                return 84 * 60 * 60;
             } else {
                 return nStakeMinAge;
             }
