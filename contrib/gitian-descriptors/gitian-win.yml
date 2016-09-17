@@ -81,7 +81,7 @@ script: |
     #
     cd src
     make -f makefile.linux-mingw HOST="$HOST" DEPSDIR="$DEPSDIR" CURDIR="$BUILDDIR/tao/src" STATIC=1 $MAKEOPTS USE_UPNP=1 BOOST_LIB_SUFFIX="-mt-s" USE_WALLET=1 DEBUGFLAGS= 
-    cp tao-daemon.exe $BINDIR/
+    cp taod.exe $BINDIR/
     cd ..
     #
     #$DEPSDIR/qt/host/bin/qmake -spec unsupported/win32-g++-cross MINIUPNPC_LIB_PATH=$HOME/build/miniupnpc MINIUPNPC_INCLUDE_PATH=$HOME/build/ BDB_LIB_PATH=$HOME/build/db-4.8.30.NC/build_unix BDB_INCLUDE_PATH=$HOME/build/db-4.8.30.NC/build_unix BOOST_LIB_PATH=$HOME/build/lib BOOST_INCLUDE_PATH=$HOME/build/include BOOST_LIB_SUFFIX=-mt-s BOOST_THREAD_LIB_SUFFIX=_win32-mt-s OPENSSL_LIB_PATH=$HOME/build/openssl-1.0.1h OPENSSL_INCLUDE_PATH=$HOME/build/openssl-1.0.1h/include INCLUDEPATH=$HOME/build DEFINES=BOOST_THREAD_USE_LIB TAO_NEED_QT_PLUGINS=1 QMAKE_LRELEASE=lrelease QMAKE_CXXFLAGS=-frandom-seed=bitcoin USE_BUILD_INFO=1

@@ -54,10 +54,10 @@ bool AppInit(int argc, char* argv[])
             // First part of help message is specific to bitcoind / RPC client
             std::string strUsage = _("Tao version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  tao-daemon [options]                     " + "\n" +
-                  "  tao-daemon [options] <command> [params]  " + _("Send command to -server or tao-daemon") + "\n" +
-                  "  tao-daemon [options] help                " + _("List commands") + "\n" +
-                  "  tao-daemon [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  taod [options]                     " + "\n" +
+                  "  taod [options] <command> [params]  " + _("Send command to -server or taod") + "\n" +
+                  "  taod [options] help                " + _("List commands") + "\n" +
+                  "  taod [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessage();
 

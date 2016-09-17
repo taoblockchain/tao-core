@@ -2691,8 +2691,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
-        <translation>向-server服务器或tao-daemon发送命令</translation>
+        <source>Send command to -server or taod</source>
+        <translation>向-server服务器或taod发送命令</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2719,8 +2719,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
-        <translation>指定pid文件(默认: tao-daemon.pid)</translation>
+        <source>Specify pid file (default: taod.pid)</source>
+        <translation>指定pid文件(默认: taod.pid)</translation>
     </message>
     <message>
         <location line="+2"/>

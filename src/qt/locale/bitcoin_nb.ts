@@ -2681,7 +2681,7 @@ Dette betyr at det trengs en avgift på minimum %2.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
+        <source>Send command to -server or taod</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2706,7 +2706,7 @@ Dette betyr at det trengs en avgift på minimum %2.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
+        <source>Specify pid file (default: taod.pid)</source>
         <translation type="unfinished"/>
     </message>
     <message>

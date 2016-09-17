@@ -4,6 +4,6 @@ See doc/readme-qt.rst for instructions on building Tao QT,
 the intended-for-end-users, nice-graphical-interface, reference
 implementation of Tao.
 
-See doc/build-*.txt for instructions on building tao-daemon,
+See doc/build-*.txt for instructions on building taod,
 the intended-for-services, no-graphical-interface, reference
 implementation of Tao.

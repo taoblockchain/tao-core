@@ -2693,8 +2693,8 @@ To znamená, že je potřebný poplatek ve výši nejméně %2.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
-        <translation>Pošli příkaz na -server nebo tao-daemon</translation>
+        <source>Send command to -server or taod</source>
+        <translation>Pošli příkaz na -server nebo taod</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2718,8 +2718,8 @@ To znamená, že je potřebný poplatek ve výši nejméně %2.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
-        <translation>Urči pid soubor (výchozí: tao-daemon.pid)</translation>
+        <source>Specify pid file (default: taod.pid)</source>
+        <translation>Urči pid soubor (výchozí: taod.pid)</translation>
     </message>
     <message>
         <location line="+2"/>

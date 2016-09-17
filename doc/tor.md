@@ -34,7 +34,7 @@ outgoing connections be anonimized, but more is possible.
 
 In a typical situation, this suffices to run behind a Tor proxy:
 
-  ./tao-daemon -proxy=127.0.0.1:9050
+  ./taod -proxy=127.0.0.1:9050
 
 
 2. Run a Tao hidden server
@@ -48,7 +48,7 @@ config file):
   HiddenServicePort 17170 127.0.0.1:17170
 
 The directory can be different of course, but (both) port numbers should be equal to
-your tao-daemon's P2P listen port (17170 by default).
+your taod's P2P listen port (17170 by default).
 
 -externalip=X   You can tell litecoin about its publicly reachable address using
                 this option, and this can be a .onion address. Given the above
@@ -70,18 +70,18 @@ your tao-daemon's P2P listen port (17170 by default).
 
 In a typical situation, where you're only reachable via Tor, this should suffice:
 
-  ./tao-daemon -proxy=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -listen
+  ./taod -proxy=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -listen
 
 (obviously, replace the Onion address with your own). If you don't care too much
 about hiding your node, and want to be reachable on IPv4 as well, additionally
 specify:
 
-  ./tao-daemon ... -discover
+  ./taod ... -discover
 
 and open port 17170 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
 
-  ./tao-daemon -tor=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -discover
+  ./taod -tor=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -discover
 

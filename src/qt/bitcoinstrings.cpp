@@ -30,7 +30,7 @@ QT_TRANSLATE_NOOP("tao-core", ""
 QT_TRANSLATE_NOOP("tao-core", "Options:"),
 QT_TRANSLATE_NOOP("tao-core", "This help message"),
 QT_TRANSLATE_NOOP("tao-core", "Specify configuration file (default: tao.conf)"),
-QT_TRANSLATE_NOOP("tao-core", "Specify pid file (default: tao-daemon.pid)"),
+QT_TRANSLATE_NOOP("tao-core", "Specify pid file (default: taod.pid)"),
 QT_TRANSLATE_NOOP("tao-core", "Specify data directory"),
 QT_TRANSLATE_NOOP("tao-core", "Specify wallet file (within data directory)"),
 QT_TRANSLATE_NOOP("tao-core", "Set database cache size in megabytes (default: 25)"),
@@ -171,7 +171,7 @@ QT_TRANSLATE_NOOP("tao-core", ""
 QT_TRANSLATE_NOOP("tao-core", "Unable to bind to %s on this computer (bind returned error %d, %s)"),
 QT_TRANSLATE_NOOP("tao-core", "Tao version"),
 QT_TRANSLATE_NOOP("tao-core", "Usage:"),
-QT_TRANSLATE_NOOP("tao-core", "Send command to -server or tao-daemon"),
+QT_TRANSLATE_NOOP("tao-core", "Send command to -server or taod"),
 QT_TRANSLATE_NOOP("tao-core", "List commands"),
 QT_TRANSLATE_NOOP("tao-core", "Get help for a command"),
 QT_TRANSLATE_NOOP("tao-core", ""

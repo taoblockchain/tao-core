@@ -2691,7 +2691,7 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
+        <source>Send command to -server or taod</source>
         <translation>Pošlji ukaz na -server ali blackoind</translation>
     </message>
     <message>
@@ -2716,7 +2716,7 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
+        <source>Specify pid file (default: taod.pid)</source>
         <translation>Določi pid datoteko (privzeto: tao.pid)</translation>
     </message>
     <message>

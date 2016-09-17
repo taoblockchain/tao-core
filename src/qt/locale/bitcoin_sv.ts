@@ -2693,8 +2693,8 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
-        <translation>Skicka kommando till -server eller tao-daemon</translation>
+        <source>Send command to -server or taod</source>
+        <translation>Skicka kommando till -server eller taod</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2718,8 +2718,8 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
-        <translation>Ange pid filen (standard tao-daemon.pid)</translation>
+        <source>Specify pid file (default: taod.pid)</source>
+        <translation>Ange pid filen (standard taod.pid)</translation>
     </message>
     <message>
         <location line="+2"/>

@@ -2689,8 +2689,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
-        <translation>Enviar comandes a -server o tao-daemon</translation>
+        <source>Send command to -server or taod</source>
+        <translation>Enviar comandes a -server o taod</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2714,8 +2714,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
-        <translation>Especificar arxiu pid (per defecte: tao-daemon.pid)</translation>
+        <source>Specify pid file (default: taod.pid)</source>
+        <translation>Especificar arxiu pid (per defecte: taod.pid)</translation>
     </message>
     <message>
         <location line="+2"/>

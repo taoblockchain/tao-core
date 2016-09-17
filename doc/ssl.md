@@ -15,7 +15,7 @@ for this to work properly.
     (NOTE: you should NOT enter a passphrase)
 
 2. Configure NeosCoin to use SSL
-    * Stop your current tao-daemon or tao-qt
+    * Stop your current taod or tao-qt
     * Edit the tao.conf and add
       rpcssl=1
 

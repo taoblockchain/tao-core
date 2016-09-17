@@ -2693,8 +2693,8 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
-        <translation>Envoyer commande à -server ou tao-daemon</translation>
+        <source>Send command to -server or taod</source>
+        <translation>Envoyer commande à -server ou taod</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2718,8 +2718,8 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
-        <translation>Spécifier le fichier pid (par défaut: tao-daemon.pid)</translation>
+        <source>Specify pid file (default: taod.pid)</source>
+        <translation>Spécifier le fichier pid (par défaut: taod.pid)</translation>
     </message>
     <message>
         <location line="+2"/>

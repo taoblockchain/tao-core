@@ -53,9 +53,9 @@ script: |
   cp $OUTDIR/src/COPYING $OUTDIR
   cd src
   cp -r crypto obj
-  make -f makefile.unix STATIC=1 USE_NATIVE_I2P=1 OPENSSL_INCLUDE_PATH="$STAGING/include" OPENSSL_LIB_PATH="$STAGING/lib" $MAKEOPTS tao-daemon USE_UPNP=1 BOOST_LIB_SUFFIX="-mt" DEBUGFLAGS= 
+  make -f makefile.unix STATIC=1 USE_NATIVE_I2P=1 OPENSSL_INCLUDE_PATH="$STAGING/include" OPENSSL_LIB_PATH="$STAGING/lib" $MAKEOPTS taod USE_UPNP=1 BOOST_LIB_SUFFIX="-mt" DEBUGFLAGS= 
   mkdir -p $STAGING/bin/$GBUILD_BITS
-  install -s tao-daemon $OUTDIR/bin/$GBUILD_BITS
+  install -s taod $OUTDIR/bin/$GBUILD_BITS
   #
   cd ..
   qmake INCLUDEPATH="$STAGING/include" LIBS="-L$STAGING/lib" BOOST_LIB_SUFFIX="-mt" RELEASE=1 USE_QRCODE=1 USE_NATIVE_I2P=1

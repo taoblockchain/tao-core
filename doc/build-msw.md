@@ -97,4 +97,4 @@ DOS prompt:
 
     cd \tao\src
     mingw32-make -f makefile.mingw
-    strip tao-daemon.exe
+    strip taod.exe

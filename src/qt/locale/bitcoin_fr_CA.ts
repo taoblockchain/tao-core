@@ -2693,8 +2693,8 @@ Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
-        <translation>Envoyer commande à -server ou tao-daemon</translation>
+        <source>Send command to -server or taod</source>
+        <translation>Envoyer commande à -server ou taod</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2718,8 +2718,8 @@ Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
-        <translation>Spécifier le fichier pid (defaut: tao-daemon.pid)
+        <source>Specify pid file (default: taod.pid)</source>
+        <translation>Spécifier le fichier pid (defaut: taod.pid)
 </translation>
     </message>
     <message>

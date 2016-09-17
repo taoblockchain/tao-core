@@ -2693,8 +2693,8 @@ Acest lucru înseamnă că o taxă de cel puțin %2 este necesară</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or tao-daemon</source>
-        <translation>Trimite comanda catre server sau tao-daemon</translation>
+        <source>Send command to -server or taod</source>
+        <translation>Trimite comanda catre server sau taod</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2718,7 +2718,7 @@ Acest lucru înseamnă că o taxă de cel puțin %2 este necesară</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: tao-daemon.pid)</source>
+        <source>Specify pid file (default: taod.pid)</source>
         <translation>Speficica fisier pid(implicit: tao.pid)</translation>
     </message>
     <message>

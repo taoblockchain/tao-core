@@ -32,7 +32,7 @@ USE_WALLET:=1
 LIBS= -dead_strip
 
 ifdef STATIC
-# Build STATIC if you are redistributing the tao-daemon binary
+# Build STATIC if you are redistributing the taod binary
 LIBS += \
  $(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib/libdb_cxx-4.8.a \
  $(DEPSDIR)/lib/libboost_system.a \
