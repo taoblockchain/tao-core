@@ -85,7 +85,6 @@ public:
             }
         else
                 return nBaseProofOfStakeReward;
-        return nBaseProofOfStakeReward; 
     }
     std::string DarksendPoolDummyAddress() const { return strDarksendPoolDummyAddress; }
     int CoinbaseMaturity() const { return nCoinbaseMaturity; }
