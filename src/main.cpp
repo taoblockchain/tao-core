@@ -2070,8 +2070,12 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             int64_t nTxValueOut = tx.GetValueOut();
             nValueIn += nTxValueIn;
             nValueOut += nTxValueOut;
-            if (!tx.IsCoinStake())
+            if (!tx.IsCoinStake() && (pindex->nHeight <= Params().POWRewardBlock())
+            {
                 nFees += nTxValueIn - nTxValueOut;
+            } else {
+                nFees += nTxValueIn - nTxValueOut;
+            }
             if (tx.IsCoinStake())
                 nStakeReward = nTxValueOut - nTxValueIn;
 
