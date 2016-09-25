@@ -213,15 +213,15 @@ Value getrawmempool(const Array& params, bool fHelp)
 }
 Value mempoolInfoToJSON()
 {
-    //Value ret(Value::VOBJ);
-    ret.push_back(Pair("size", (int64_t) mempool.size()));
+    //Value ret;
+    //ret.push_back(Pair("size", (int64_t) mempool.size()));
     //ret.push_back(Pair("bytes", (int64_t) mempool.GetTotalTxSize()));
     //ret.push_back(Pair("usage", (int64_t) mempool.DynamicMemoryUsage()));
     //size_t maxmempool = GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000;
     //ret.push_back(Pair("maxmempool", (int64_t) maxmempool));
     //ret.push_back(Pair("mempoolminfee", ValueFromAmount(mempool.GetMinFee(maxmempool).GetFeePerK())));
 
-    return ret;
+    //return ret;
 }
 
 Value getmempoolinfo(const Array& params, bool fHelp)
