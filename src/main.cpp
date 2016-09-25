@@ -4220,6 +4220,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         if (bPingFinished) {
             pfrom->nPingNonceSent = 0;
         }
+        pfrom->PushMessage("mempool");
     }
 
 
