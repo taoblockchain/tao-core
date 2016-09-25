@@ -1735,6 +1735,7 @@ void RelayTransaction(const CTransaction& tx, const uint256& hash)
     CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
     ss.reserve(10000);
     ss << tx;
+    LogPrintf("mempool: relaying tx %s, relaying\n", tx.GetHash().ToString().c_str());
     RelayTransaction(tx, hash, ss);
 }
 
@@ -1753,6 +1754,7 @@ void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataSt
         // Save original serialized message so newer versions are preserved
         mapRelay.insert(std::make_pair(inv, ss));
         vRelayExpiration.push_back(std::make_pair(GetTime() + 15 * 60, inv));
+        LogPrintf("mempool: relaying package tx %s, relaying\n", tx.GetHash().ToString().c_str());
     }
 
     RelayInventory(inv);

@@ -3751,6 +3751,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     else if (strCommand == "verack")
     {
         pfrom->SetRecvVersion(min(pfrom->nVersion, PROTOCOL_VERSION));
+        pfrom->PushMessage("mempool");
     }
 
 
@@ -4031,6 +4032,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
         if (AcceptToMemoryPool(mempool, tx, true, &fMissingInputs, false, ignoreFees))
         {
+            LogPrintf("mempool: accepted tx %s, relaying\n", tx.GetHash().ToString().c_str());
             RelayTransaction(tx, inv.hash);
             vWorkQueue.push_back(inv.hash);
 
