@@ -1479,7 +1479,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
 {
     int64_t nSubsidy = nCoinAge * Params().BaseProofOfStakeReward(GetCurrentBlockHeight()) / 365 / COIN;
-    if (Params().POWRewardBlock() + 500)
+    if (GetCurrentBlockHeight() >= (Params().POWRewardBlock() + 500))
         nSubsidy = nCoinAge * Params().BaseProofOfStakeReward(GetCurrentBlockHeight()) / 365;
     return nSubsidy + nFees;
 }
