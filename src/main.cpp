@@ -1479,6 +1479,8 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
 {
     int64_t nSubsidy = nCoinAge * Params().BaseProofOfStakeReward(GetCurrentBlockHeight()) / 365 / COIN;
+    if (Params().POWRewardBlock() + 500)
+        nSubsidy = nCoinAge * Params().BaseProofOfStakeReward(GetCurrentBlockHeight()) / 365;
     return nSubsidy + nFees;
 }
 
@@ -2095,6 +2097,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     }
     if (IsProofOfStake())
     {
+        LogPrintf("Is proof of stake...");
         // ppcoin: coin stake tx earns reward instead of paying fee
         uint64_t nCoinAge;
         if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge))
