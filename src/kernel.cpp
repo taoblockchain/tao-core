@@ -211,7 +211,7 @@ bool CheckStakeKernelHash(CBlockIndex* pindexPrev, unsigned int nBits, unsigned 
         return error("CheckStakeKernelHash() : nTime violation");
 
     if (nTimeBlockFrom + Params().StakeMinAge(pindexPrev->nHeight) > nTimeTx) // Min age requirement
-        return error("CheckStakeKernelHash() : min age violation");
+        return false;// OMG annoying error("CheckStakeKernelHash() : min age violation");
 
     // Base target
     CBigNum bnTarget;

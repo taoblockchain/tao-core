@@ -427,19 +427,16 @@ Value sendtoaddress(const Array& params, bool fHelp)
             "\nSent an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
-           "1. \"taoaddress\"  (string, required) The Tao address to send to.\n"
+            "1. \"taoaddress\"  (string, required) The Tao address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in TAO to send. eg 0.1\n"
-            "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
-            "                             This is not part of the transaction, just kept in your wallet.\n"
-            "4. \"comment-to\"  (string, optional) A comment to store the name of the person or organization \n"
-            "                             to which you're sending the transaction. This is not part of the \n"
-            "                             transaction, just kept in your wallet.\n"
+            "3. \"data\"        (string, optional) A string of base64 data. \n"
+            "4. \"app id\"      (string, optional) The application ID\n"
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n"
             + HelpExampleCli("sendtoaddress", "\"TfFxcTN7BJQp88cPJYRvFpUAAKefTib9uh\" 0.1")
-            + HelpExampleCli("sendtoaddress", "\"TfFxcTN7BJQp88cPJYRvFpUAAKefTib9uh\" 0.1 \"donation\" \"seans outpost\"")
-            + HelpExampleRpc("sendtoaddress", "\"TfFxcTN7BJQp88cPJYRvFpUAAKefTib9uh\", 0.1, \"donation\", \"seans outpost\"")
+            + HelpExampleCli("sendtoaddress", "\"TfFxcTN7BJQp88cPJYRvFpUAAKefTib9uh\" 0.1 \"This is some data.\"")
+            + HelpExampleRpc("sendtoaddress", "\"TfFxcTN7BJQp88cPJYRvFpUAAKefTib9uh\", 0.1, \"This is some data.\"")
         );
 
     EnsureWalletIsUnlocked();
@@ -457,18 +454,17 @@ Value sendtoaddress(const Array& params, bool fHelp)
 
     CWalletTx wtx;
     std::string sNarr;
-
+    std::string data;
     // Wallet comments
     if (params.size() > 2 && params[2].type() != null_type && !params[2].get_str().empty())
+    {
         wtx.mapValue["comment"] = params[2].get_str();
+        data = params[2].get_str();
+    }
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
-        wtx.mapValue["to"]      = params[3].get_str();
-    if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
-        sNarr = params[4].get_str();
-    if (sNarr.length() > 24)
-        throw std::runtime_error("Narration must be 24 characters or less.");
+        sNarr = params[3].get_str();
 
-    std::string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, sNarr, wtx);
+    std::string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, sNarr, wtx, data);
 
     if (strError != "")
         throw JSONRPCError(RPC_WALLET_ERROR, strError);

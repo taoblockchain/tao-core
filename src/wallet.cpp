@@ -2351,8 +2351,8 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
 {
 
     int64_t nValue = 0;
-    LogPrintf("CWallet::CreateTransaction start");
-    bool fIntelliTx = ((txData.size() > 0) && (vecSend.size() == 1));
+    LogPrintf("CWallet::CreateTransaction start\n");
+    bool fIntelliTx = ((txData.size() > 0) && (vecSend.size() > 0));
     BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
     {
         if (nValue < 0)
@@ -2367,9 +2367,15 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
         strFailReason = _("Transaction amounts must be positive");
         return false;
     }
+    // transaction data
+    if (txData.size() > ((2 * 1024 * 1024) / 8)) {
+        strFailReason = _("txData is too long");
+        return false;
+    }
 
     wtxNew.fTimeReceivedIsTxTime = true;
     wtxNew.BindWallet(this);
+    wtxNew.SetData(txData);
 
     {
         // txdb must be opened before the mapWallet lock
@@ -2389,11 +2395,15 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                 // vouts to the payees
                 BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
                 {
+                    // don't create an output for zero coins in data transaction
+                    //if (0 == s.second && wtxNew.data.size() > 0)
+                    //    continue;
+
                     CTxOut txout(s.second, s.first);
                     bool fOpReturn = false;
-
                     if(txout.IsNull() || (!txout.IsEmpty() && txout.nValue == 0))
                     {
+                        LogPrintf(txout.ToString().c_str());
                         txnouttype whichType;
                         vector<valtype> vSolutions;
                         if (!Solver(txout.scriptPubKey, whichType, vSolutions))
@@ -2410,7 +2420,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                             fOpReturn = true;
                     }
 
-                    if (!(fOpReturn || fIntelliTx) && txout.IsDust(MIN_RELAY_TX_FEE))
+                    if (txout.IsDust(MIN_RELAY_TX_FEE))
                     {
                         strFailReason = _("Transaction amount too small");
                         return false;
@@ -2552,7 +2562,6 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                 // Fill vtxPrev by copying from previous transactions vtxPrev
                 wtxNew.AddSupportingTransactions(txdb);
                 wtxNew.fTimeReceivedIsTxTime = true;
-
                 break;
             }
         }
@@ -2560,25 +2569,19 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
     return true;
 }
 
-bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl, const std::string& txData)
+bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, 
+                                int64_t& nFeeRet, const CCoinControl* coinControl, const std::string& txData)
 {
     vector< pair<CScript, int64_t> > vecSend;
     vecSend.push_back(make_pair(scriptPubKey, nValue));
-
     if (sNarr.length() > 0)
     {
         std::vector<uint8_t> vNarr(sNarr.c_str(), sNarr.c_str() + sNarr.length());
-        std::vector<uint8_t> vNDesc;
 
-        vNDesc.resize(2);
-        vNDesc[0] = 'n';
-        vNDesc[1] = 'p';
-
-        CScript scriptN = CScript() << OP_RETURN << vNDesc << OP_RETURN << vNarr;
+        CScript scriptN = CScript() << OP_RETURN << vNarr;
 
         vecSend.push_back(make_pair(scriptN, 0));
     }
-
     // -- CreateTransaction won't place change between value and narr output.
     //    narration output will be for preceding output
 
@@ -2912,7 +2915,9 @@ bool CWallet::UpdateEncapsulatedAddress(std::string &addr, std::string &label, b
     return true;
 }
 
-bool CWallet::CreateEncapsulatedTransaction(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t>& P, std::vector<uint8_t>& narr, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl, const std::string& txData)
+bool CWallet::CreateEncapsulatedTransaction(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t>& P, std::vector<uint8_t>& narr, 
+                std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl, 
+                const std::string& txData)
 {
     vector< pair<CScript, int64_t> > vecSend;
     vecSend.push_back(make_pair(scriptPubKey, nValue));
@@ -3705,7 +3710,7 @@ string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNa
 
 
 
-string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee, const std::string& txData)
+string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, const std::string& txData, bool fAskFee)
 {
     // Check amount
     if (nValue <= 0)

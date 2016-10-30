@@ -13,7 +13,7 @@
 #include "script.h"
 #include "scrypt.h"
 #include "hashblock.h"
-
+#include "support/vectors.h"
 #include <list>
 
 class CValidationState;
@@ -314,6 +314,11 @@ public:
 
     std::string GetBase64Data() const {
         return stringFromVch(data);
+    }
+
+    void SetData(std::string d)
+    {
+        data = vchFromString(EncodeBase64(d.c_str()));
     }
 
     std::string GetData() const {
