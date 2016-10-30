@@ -1502,6 +1502,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     const CBigNum nProofOfWorkLimit = fProofOfStake ? GetProofOfStakeLimit(pindexLast->nHeight) : Params().ProofOfWorkLimit();
 
     const CBlockIndex *BlockLastSolved = pindexLast;
+    //const CBlockIndex *BlockLastSolved = GetLastBlockIndex(pindexBest, fProofOfStake);
     const CBlockIndex *BlockReading = pindexLast;
     int64_t nActualTimespan = 0;
     int64_t LastBlockTime = 0;
