@@ -2965,11 +2965,11 @@ bool VerifySignature(const CTransaction& txFrom, const CTransaction& txTo, unsig
     if (txin.prevout.n >= txFrom.vout.size())
         return false;
     const CTxOut& txout = txFrom.vout[txin.prevout.n];
-    LogPrintf("VerifySignature() : prevout all good\n");
+    //LogPrintf("VerifySignature() : prevout all good\n");
 
     if (txin.prevout.hash != txFrom.GetHash())
         return false;
-    LogPrintf("VerifySignature() : All good\n");
+    //LogPrintf("VerifySignature() : All good\n");
     return VerifyScript(txin.scriptSig, txout.scriptPubKey, txTo, nIn, flags, nHashType);
 }
 

@@ -447,7 +447,7 @@ public:
 
     void PushInventory(const CInv& inv)
     {
-        LogPrintf("mempool: pushing inventory\n");
+        //LogPrintf("mempool: pushing inventory\n");
         {
             LOCK(cs_inventory);
             if (!setInventoryKnown.count(inv))
