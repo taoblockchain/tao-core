@@ -16,14 +16,14 @@ INCLUDEPATHS= \
  -I"$(DEPSDIR)/include" \
  -I"$(DEPSDIR)/Cellar/boost/HEAD/include" \
  -I"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/include" \
- -I"$(DEPSDIR)/Cellar/openssl101/1.0.1t_1/include" \
+ -I"$(DEPSDIR)/opt/openssl/include" \
  -I"$(DEPSDIR)/Cellar/gmp/6.0.0a/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
  -L"$(DEPSDIR)/Cellar/boost/HEAD/lib" \
  -L"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib" \
- -L"$(DEPSDIR)/Cellar/openssl101/1.0.1t_1/lib" \
+ -L"$(DEPSDIR)/opt/openssl/lib" \
  -L"$(DEPSDIR)/Cellar/gmp/6.0.0a/lib"
 
 USE_UPNP:=1
@@ -39,8 +39,8 @@ LIBS += \
  $(DEPSDIR)/lib/libboost_filesystem.a \
  $(DEPSDIR)/lib/libboost_program_options.a \
  $(DEPSDIR)/lib/libboost_thread-mt.a \
- $(DEPSDIR)/Cellar/openssl101/1.0.1t_1/lib/libssl.a \
- $(DEPSDIR)/Cellar/openssl101/1.0.1t_1/lib/libcrypto.a \
+ $(DEPSDIR)/opt/openssl/lib/libssl.a \
+ $(DEPSDIR)/opt/openssl/lib/libcrypto.a \
  $(DEPSDIR)/lib/libgmp.a \
  -lz
 else
