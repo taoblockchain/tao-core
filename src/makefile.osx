@@ -14,17 +14,17 @@ INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
- -I"$(DEPSDIR)/Cellar/boost/HEAD/include" \
+ -I"$(DEPSDIR)/Cellar/boost/1.63.0/include" \
  -I"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/include" \
  -I"$(DEPSDIR)/opt/openssl/include" \
- -I"$(DEPSDIR)/Cellar/gmp/6.0.0a/include"
+ -I"$(DEPSDIR)/Cellar/gmp/6.1.2/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
- -L"$(DEPSDIR)/Cellar/boost/HEAD/lib" \
+ -L"$(DEPSDIR)/Cellar/boost/1.63.0/lib" \
  -L"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib" \
  -L"$(DEPSDIR)/opt/openssl/lib" \
- -L"$(DEPSDIR)/Cellar/gmp/6.0.0a/lib"
+ -L"$(DEPSDIR)/Cellar/gmp/6.1.2/lib"
 
 USE_UPNP:=1
 USE_WALLET:=1
