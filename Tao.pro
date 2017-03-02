@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = tao-qt
-VERSION = 0.9.2.3
+VERSION = 0.9.2.5
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor 
 QT += network printsupport core gui
 DEFINES += ENABLE_WALLET
