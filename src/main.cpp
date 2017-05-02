@@ -2506,6 +2506,9 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const u
     if (miPrev != mapBlockIndex.end())
     {
         pindexNew->pprev = (*miPrev).second;
+        // When the client disconnects from the network for whatever reason, when it catches up the last block
+        // received isn't updated in memory with the latest block downloaded
+        pindexNew->pprev->pnext = pindexNew;
         pindexNew->nHeight = pindexNew->pprev->nHeight + 1;
     }
 
