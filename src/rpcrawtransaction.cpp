@@ -153,6 +153,7 @@ Value listunspent(const Array& params, bool fHelp)
             "Results are an array of Objects, each of which has:\n"
             "{txid, vout, scriptPubKey, amount, confirmations}");
 
+    sprintf("WTF?");
     RPCTypeCheck(params, list_of(int_type)(int_type)(array_type));
 
     int nMinDepth = 1;
