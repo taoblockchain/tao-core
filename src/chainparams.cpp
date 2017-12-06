@@ -122,7 +122,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY]  =       list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY]  =       list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        vSeeds.push_back(CDNSSeedData("Seed01",  "explorer.tao.network"));
+        vSeeds.push_back(CDNSSeedData("Seed01",  "taoexplorer.com"));
         vSeeds.push_back(CDNSSeedData("Seed02",  "seed1.tao.network"));
         vSeeds.push_back(CDNSSeedData("Seed03",  "seed2.tao.network"));
         vSeeds.push_back(CDNSSeedData("Seed04",  "seed3.tao.network"));
