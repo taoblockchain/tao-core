@@ -102,7 +102,7 @@ public:
         else
                 return nStakeMinAge;
     }
-
+    int GetBlockSizeHeight() const { return nBlockSizeHeight; }
     //std::string SporkKey() const { return strSporkKey; }
     //std::string AlphanodePaymentPubKey() const { return strAlphanodePaymentsPubKey; }
 protected:
@@ -121,6 +121,7 @@ protected:
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
     int nLastPOWBlock;
     int nPOSStartBlock;
+    int nBlockSizeHeight;
     int64_t nPoolMaxTransactions;
     int64_t nTargetBlockSpacing;
     std::string strDarksendPoolDummyAddress;

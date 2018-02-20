@@ -40,6 +40,7 @@ static const unsigned int NUM_BLOCKS_FOR_MEDIAN_BLOCK = 2016;
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static unsigned int maxBlockSize = 20000000;
 static const unsigned int OLD_MAX_BLOCK_SIZE = 1000000;
+static const unsigned int MAX_TX_SIZE = 1000000;
 /** The maximum size for mined blocks */
 static const unsigned int MAX_BLOCK_SIZE_GEN = maxBlockSize/2;
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/

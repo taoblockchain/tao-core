@@ -148,6 +148,7 @@ public:
         nAlphaNodeCollateral = 10000 * COIN;
         nBasePOWReward = 1 * COIN;
         nPOWRewardBlock = 10000;
+        nBlockSizeHeight = 100000;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
@@ -199,6 +200,7 @@ public:
         nPOSStartBlock = 5;
         nCoinbaseMaturity = 5;
         nStakeMinAge = 30; 
+        nBlockSizeHeight = 1;
 
 
     }
@@ -257,7 +259,7 @@ bool SelectParamsFromCommandLine() {
     bool fCakeNet = GetBoolArg("-cakenet", false);
     
     if (fTestNet) {
-        
+
         SelectParams(CChainParams::TESTNET);
     } else {
         if (fCakeNet) {

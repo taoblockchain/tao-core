@@ -2036,7 +2036,9 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     unsigned int nSigOps = 0;
     int nInputs = 0;
 
-    maxBlockSize = BlockSizeCalculator::ComputeBlockSize(pindex);
+    if (Params().GetBlockSizeHeight() < pindex->nHeight)
+        maxBlockSize = BlockSizeCalculator::ComputeBlockSize(pindex);
+    
     maxBlockSigops = maxBlockSize/50;
     maxStandardTxSigops = maxBlockSigops/5;
 
@@ -2566,8 +2568,10 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
     // that can be verified before saving an orphan block.
 
     // Size limits
-    if (vtx.empty() || vtx.size() > maxBlockSize || ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > maxBlockSize)
-        return DoS(100, error("CheckBlock() : size limits failed"));
+    CBlockIndex *pindex = pindexBest;
+    if (Params().GetBlockSizeHeight() < pindex->nHeight)
+        if (vtx.empty() || vtx.size() > maxBlockSize || ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > maxBlockSize)
+            return DoS(100, error("CheckBlock() : size limits failed"));
 
     // Check proof of work matches claimed amount
     if (fCheckPOW && IsProofOfWork() && !CheckProofOfWork(GetPoWHash(), nBits))

@@ -151,8 +151,6 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
     unsigned int nBlockMinSize = GetArg("-blockminsize", 0);
     nBlockMinSize = std::min(nBlockMaxSize, nBlockMinSize);
 
-    // Limit to between 1K and (maxBlockSize or MAX_BLOCK_SIZE)-1K for sanity:
-    nBlockMaxSize = std::max((unsigned int)1000, std::min((unsigned int)(maxBlockSize-1000), nBlockMaxSize));
     // Fee-per-kilobyte amount considered the same as "free"
     // Be careful setting this: if you set it to zero then
     // a transaction spammer can cheaply fill blocks using
@@ -284,11 +282,17 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
             // Size limits
             unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
-            if (nBlockSize + nTxSize >= nBlockMaxSize)
-            {
-                LogPrintf("CreateNewBlock(): Block Size Excceeded: BlockMaxSize=%d, BlockSize=%d, TXSize=%d\n",nBlockMaxSize, nBlockSize,nTxSize);
-                continue;
-            }
+            if (nHeight >= Params().GetBlockSizeHeight())
+                if (nTxSize > MAX_TX_SIZE) {
+                    LogPrintf("CreateNewBlock(): Transaction Size Excceeded: TxMaxSize=%d, TxSize=%d\n",MAX_TX_SIZE,nTxSize);
+                    continue;
+                }
+            if (nHeight < Params().GetBlockSizeHeight())
+                if (nBlockSize + nTxSize >= nBlockMaxSize)
+                {
+                    LogPrintf("CreateNewBlock(): Block Size Excceeded: BlockMaxSize=%d, BlockSize=%d, TXSize=%d\n",nBlockMaxSize, nBlockSize,nTxSize);
+                    continue;
+                }
             //if (fDebug)
             //    LogPrintf("CreateNewBlock(): Block Size OK\n");
 
@@ -313,14 +317,24 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
             // Prioritize by fee once past the priority size or we run out of high-priority
             // transactions:
-            if (!fSortedByFee &&
-                ((nBlockSize + nTxSize >= nBlockPrioritySize) || (dPriority < COIN * 144 / 250)))
+            if (nHeight < Params().GetBlockSizeHeight())
             {
-                fSortedByFee = true;
-                comparer = TxPriorityCompare(fSortedByFee);
-                std::make_heap(vecPriority.begin(), vecPriority.end(), comparer);
+                if (!fSortedByFee &&
+                    ((nBlockSize + nTxSize >= nBlockPrioritySize) || (dPriority < COIN * 144 / 250)))
+                {
+                    fSortedByFee = true;
+                    comparer = TxPriorityCompare(fSortedByFee);
+                    std::make_heap(vecPriority.begin(), vecPriority.end(), comparer);
+                }
+            } else {
+                if (!fSortedByFee &&
+                    ((dPriority < COIN * 144 / 250)))
+                {
+                    fSortedByFee = true;
+                    comparer = TxPriorityCompare(fSortedByFee);
+                    std::make_heap(vecPriority.begin(), vecPriority.end(), comparer);
+                }
             }
-
             // Connecting shouldn't fail due to dependency on other memory pool transactions
             // because we're already processing them in order of dependency
             map<uint256, CTxIndex> mapTestPoolTmp(mapTestPool);
