@@ -179,7 +179,7 @@ public:
         pchMessageStart[3] = 0x3e;
         vAlertPubKey = ParseHex("045f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca54ba511b8b782bc5085962412e8b9879496e3b60bebee7c36987d1d5848b9a50");
         nDefaultPort = 16160;
-        nRPCPort = 14141;
+        nRPCPort = 16161;
         strDataDir = "testnet";
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
@@ -257,6 +257,7 @@ bool SelectParamsFromCommandLine() {
     bool fCakeNet = GetBoolArg("-cakenet", false);
     
     if (fTestNet) {
+        
         SelectParams(CChainParams::TESTNET);
     } else {
         if (fCakeNet) {
