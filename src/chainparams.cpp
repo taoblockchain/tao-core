@@ -148,7 +148,7 @@ public:
         nAlphaNodeCollateral = 10000 * COIN;
         nBasePOWReward = 1 * COIN;
         nPOWRewardBlock = 10000;
-        nBlockSizeHeight = 100000;
+        nBlockSizeHeight = 110000;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
