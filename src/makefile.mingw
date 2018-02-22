@@ -5,23 +5,23 @@
 USE_UPNP:=0
 USE_WALLET:=1
 
-BOOST_SUFFIX?=-mgw49-mt-s-1_57
+BOOST_SUFFIX?=-mgw48-mt-s-1_57
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
- -I"c:/dev/coindeps32/boost_1_57_0/include" \
- -I"c:/dev/coindeps32/bdb-4.8/include" \
- -I"c:/dev/coindeps32/openssl-1.0.1p/include" \
- -I"c:/dev/coindeps32/Secp256k1/include" \
- -I"c:/dev/coindeps32/miniupnpc-1.9"
+ -I"C:/deps/boost_1_57_0" \
+ -I"C:/deps/db-4.8.30.NC/build_unix" \
+ -I"C:/deps/openssl-1.0.2n/include" \
+ -I"C:/deps/secp256k1/include" \
+ -I"C:/deps/miniupnpc-1.8"
 
 LIBPATHS= \
  -L"$(CURDIR)/leveldb" \
- -L"c:/dev/coindeps32/boost_1_57_0/lib" \
- -L"c:/dev/coindeps32/bdb-4.8/lib" \
- -L"c:/dev/coindeps32/openssl-1.0.1p/lib" \
- -L"c:/dev/coindeps32/Secp256k1/lib" \
- -L"c:/dev/coindeps32/miniupnpc-1.9"
+ -L"C:/deps/boost_1_57_0/stage/lib" \
+ -L"C:/deps/db-4.8.30.NC/build_unix" \
+ -L"C:/deps/openssl-1.0.2n" \
+ -L"C:/deps/secp256k1/.libs" \
+ -L"C:/deps/miniupnpc-1.8"
 
 LIBS= \
  -l leveldb \
@@ -39,12 +39,12 @@ LIBS= \
 DEFS=-DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
 DEBUGFLAGS=-g
 CFLAGS=-mthreads -O2 -w -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter -fpermissive $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
-LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -Wl,--large-address-aware -static
+LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat  -static
 
 TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
 ifndef USE_UPNP
-        override USE_UPNP = -
+		override USE_UPNP = -
 endif
 ifneq (${USE_UPNP}, -)
  LIBS += -l miniupnpc -l iphlpapi
@@ -57,89 +57,89 @@ LIBS += -l mingwthrd -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l w
 HEADERS = $(wildcard *.h)
 
 OBJS= \
-    obj/blocksizecalculator.o \
-    obj/dbwrapper.o \
-    obj/alert.o \
-    obj/allocators.o \
-    obj/base58.o \
-    obj/version.o \
-    obj/support/cleanse.o \
-    obj/support/vectors.o \
-    obj/intellitx.o \
-    obj/checkpoints.o \
-    obj/netbase.o \
-    obj/addrman.o \
-    obj/crypter.o \
-    obj/key.o \
-    obj/pubkey.o \
-    obj/ecwrapper.o \
-    obj/init.o \
-    obj/bitcoind.o \
-    obj/keystore.o \
-    obj/core.o \
-    obj/main.o \
-    obj/net.o \
-    obj/protocol.o \
-    obj/rpcclient.o \
-    obj/rpcprotocol.o \
-    obj/rpcserver.o \
-    obj/rpcmisc.o \
-    obj/rpcnet.o \
-    obj/rpcblockchain.o \
-    obj/rpcrawtransaction.o \
-    obj/rpcsmessage.o \
-    obj/timedata.o \
-    obj/script.o \
-    obj/scrypt.o \
-    obj/sync.o \
-    obj/txmempool.o \
-    obj/util.o \
-    obj/hash.o \
-    obj/noui.o \
-    obj/kernel.o \
-    obj/pbkdf2.o \
-    obj/chainparams.o \
-    obj/stealth.o \
-    obj/activealphanode.o \
-    obj/darksend.o \
-    obj/darksend-relay.o \
-    obj/instantx.o \
-    obj/alphanodeconfig.o \
-    obj/alphanodeman.o \
-    obj/alphanode.o \
-    obj/alphanode-payments.o \
-    obj/rpcdarksend.o \
-    obj/spork.o \
-    obj/crypto/hmac_sha256.o \
-    obj/crypto/hmac_sha512.o \
-    obj/crypto/ripemd160.o \
-    obj/crypto/sha1.o \
-    obj/crypto/sha256.o \
-    obj/crypto/sha512.o \
-    obj/smessage.o \
-    obj/cubehash.o \
-    obj/luffa.o \
-    obj/aes_helper.o \
-    obj/echo.o \
-    obj/shavite.o \
-    obj/simd.o \
-    obj/blake.o \
-    obj/bmw.o \
-    obj/groestl.o \
-    obj/jh.o \
-    obj/keccak.o \
-    obj/skein.o
+	obj/blocksizecalculator.o \
+	obj/dbwrapper.o \
+	obj/alert.o \
+	obj/allocators.o \
+	obj/base58.o \
+	obj/version.o \
+	obj/support/cleanse.o \
+	obj/support/vectors.o \
+	obj/intellitx.o \
+	obj/checkpoints.o \
+	obj/netbase.o \
+	obj/addrman.o \
+	obj/crypter.o \
+	obj/key.o \
+	obj/pubkey.o \
+	obj/ecwrapper.o \
+	obj/init.o \
+	obj/bitcoind.o \
+	obj/keystore.o \
+	obj/core.o \
+	obj/main.o \
+	obj/net.o \
+	obj/protocol.o \
+	obj/rpcclient.o \
+	obj/rpcprotocol.o \
+	obj/rpcserver.o \
+	obj/rpcmisc.o \
+	obj/rpcnet.o \
+	obj/rpcblockchain.o \
+	obj/rpcrawtransaction.o \
+	obj/rpcsmessage.o \
+	obj/timedata.o \
+	obj/script.o \
+	obj/scrypt.o \
+	obj/sync.o \
+	obj/txmempool.o \
+	obj/util.o \
+	obj/hash.o \
+	obj/noui.o \
+	obj/kernel.o \
+	obj/pbkdf2.o \
+	obj/chainparams.o \
+	obj/stealth.o \
+	obj/activealphanode.o \
+	obj/darksend.o \
+	obj/darksend-relay.o \
+	obj/instantx.o \
+	obj/alphanodeconfig.o \
+	obj/alphanodeman.o \
+	obj/alphanode.o \
+	obj/alphanode-payments.o \
+	obj/rpcdarksend.o \
+	obj/spork.o \
+	obj/crypto/hmac_sha256.o \
+	obj/crypto/hmac_sha512.o \
+	obj/crypto/ripemd160.o \
+	obj/crypto/sha1.o \
+	obj/crypto/sha256.o \
+	obj/crypto/sha512.o \
+	obj/smessage.o \
+	obj/cubehash.o \
+	obj/luffa.o \
+	obj/aes_helper.o \
+	obj/echo.o \
+	obj/shavite.o \
+	obj/simd.o \
+	obj/blake.o \
+	obj/bmw.o \
+	obj/groestl.o \
+	obj/jh.o \
+	obj/keccak.o \
+	obj/skein.o
 
 ifeq (${USE_WALLET}, 1)
-    DEFS += -DENABLE_WALLET
-    OBJS += \
-        obj/db.o \
-        obj/miner.o \
-        obj/rpcdump.o \
-        obj/rpcmining.o \
-        obj/rpcwallet.o \
-        obj/wallet.o \
-        obj/walletdb.o
+	DEFS += -DENABLE_WALLET
+	OBJS += \
+		obj/db.o \
+		obj/miner.o \
+		obj/rpcdump.o \
+		obj/rpcmining.o \
+		obj/rpcwallet.o \
+		obj/wallet.o \
+		obj/walletdb.o
 endif
 
 all: taod.exe
@@ -147,7 +147,7 @@ all: taod.exe
 # build secp256k1
 #DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include)
 #secp256k1/src/libsecp256k1_la-secp256k1.o:
-#    @echo "Building Secp256k1 ..."; cd secp256k1; chmod 755 *; ./autogen.sh; ./configure --enable-module-recovery --host=i686-w64-mingw32.static; make; cd ..;
+#    @echo "Building secp256k1 ..."; cd secp256k1; chmod 755 *; ./autogen.sh; ./configure --enable-module-recovery --host=i686-w64-mingw32.static; make; cd ..;
 #taod.exe: secp256k1/src/libsecp256k1_la-secp256k1.o
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
@@ -159,9 +159,9 @@ leveldb/libleveldb.a:
 obj/txdb-leveldb.o: leveldb/libleveldb.a
 
 obj/%.o: %.cpp $(HEADERS)
-    @mkdir -p obj/support
-    @mkdir -p obj/crypto
-    @mkdir -p obj/intellitx
+	@mkdir -p obj/support
+	@mkdir -p obj/crypto
+	@mkdir -p obj/intellitx
 	g++ -c $(CFLAGS) -o $@ $<
 
 obj/%.o: %.c $(HEADERS)
@@ -174,14 +174,14 @@ clean:
 	-rm -f obj/*.o
 	-rm -f taod.exe
 	-rm -f obj/build.h
-    -rm -rf obj/support
-    -rm -rf obj/crypto
-    -rm -rf obj/intellitx
-    -rm -f secp256k1/src/*.o
-    -rm -f secp256k1/Makefile
-    -rm -f secp256k1/aclocal.m4
-    -rm -f secp256k1/configure
-    -rm -f secp256k1/*.pc
+	-rm -rf obj/support
+	-rm -rf obj/crypto
+	-rm -rf obj/intellitx
+	-rm -f secp256k1/src/*.o
+	-rm -f secp256k1/Makefile
+	-rm -f secp256k1/aclocal.m4
+	-rm -f secp256k1/configure
+	-rm -f secp256k1/*.pc
 	cd leveldb && TARGET_OS=NATIVE_WINDOWS $(MAKE) clean && cd ..
 
 FORCE:

@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = tao-qt
-VERSION = 0.9.2.5
+VERSION = 0.10.0
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor 
 QT += network printsupport core gui
 DEFINES += ENABLE_WALLET
@@ -113,11 +113,14 @@ QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) cl
 
 
 #Build Secp256k1
-INCLUDEPATH += src/secp256k1/include
-LIBS += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
 !win32 {
+	INCLUDEPATH += src/secp256k1/include
+	LIBS += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
     gensecp256k1.commands = cd $$PWD/src/secp256k1 && ./autogen.sh && ./configure --enable-module-recovery && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\"
+} else {
+	INCLUDEPATH += C:/deps/secp256k1/include
+	LIBS += C:/deps/secp256k1/src/libsecp256k1_la-secp256k1.o
 }
 gensecp256k1.target = $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
 gensecp256k1.depends = FORCE
@@ -500,7 +503,7 @@ OTHER_FILES += \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX=-mgw49-mt-s-1_57
+    windows:BOOST_LIB_SUFFIX=-mgw48-mt-s-1_57
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
@@ -511,7 +514,7 @@ isEmpty(BOOST_THREAD_LIB_SUFFIX) {
 
 isEmpty(BDB_LIB_PATH) {
     macx:BDB_LIB_PATH = /usr/local/Cellar/berkeley-db4/4.8.30/lib
-    windows:BDB_LIB_PATH=C:/dev/coindeps32/bdb-4.8/lib
+    windows:BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
 }
 
 isEmpty(BDB_LIB_SUFFIX) {
@@ -520,17 +523,17 @@ isEmpty(BDB_LIB_SUFFIX) {
 
 isEmpty(BDB_INCLUDE_PATH) {
     macx:BDB_INCLUDE_PATH = /usr/local/Cellar/berkeley-db4/4.8.30/include
-    windows:BDB_INCLUDE_PATH=C:/dev/coindeps32/bdb-4.8/include
+    windows:BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
 }
 
 isEmpty(BOOST_LIB_PATH) {
     macx:BOOST_LIB_PATH = /usr/local/Cellar/boost@1.57/1.57.0/lib
-    windows:BOOST_LIB_PATH=C:/dev/coindeps32/boost_1_57_0/lib
+    windows:BOOST_LIB_PATH=C:/deps/boost_1_57_0/stage/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost@1.57/1.57.0/include
-    windows:BOOST_INCLUDE_PATH=C:/dev/coindeps32/boost_1_57_0/include
+    windows:BOOST_INCLUDE_PATH=C:/deps/boost_1_57_0
 }
 
 isEmpty(QRENCODE_LIB_PATH) {
@@ -547,22 +550,22 @@ isEmpty(MINIUPNPC_LIB_SUFFIX) {
 
 isEmpty(MINIUPNPC_INCLUDE_PATH) {
     macx:MINIUPNPC_INCLUDE_PATH=/usr/local/Cellar/miniupnpc/2.0/include
-    windows:MINIUPNPC_INCLUDE_PATH=C:/dev/coindeps32/miniupnpc-1.9
+    windows:MINIUPNPC_INCLUDE_PATH=C:/deps/miniupnpc-1.8
 }
 
 isEmpty(MINIUPNPC_LIB_PATH) {
     macx:MINIUPNPC_LIB_PATH=/usr/local/Cellar/miniupnpc/2.0/lib
-    windows:MINIUPNPC_LIB_PATH=C:/dev/coindeps32/miniupnpc-1.9
+    windows:MINIUPNPC_LIB_PATH=C:/deps/miniupnpc-1.8
 }
 
 isEmpty(OPENSSL_INCLUDE_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2k/include
-    windows:OPENSSL_INCLUDE_PATH=C:/dev/coindeps32/openssl-1.0.1t/include
+    windows:OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.2n/include
 }
 
 isEmpty(OPENSSL_LIB_PATH) {
     macx:OPENSSL_LIB_PATH = /usr/local/Cellar/openssl/1.0.2k/lib
-    windows:OPENSSL_LIB_PATH=C:/dev/coindeps32/openssl-1.0.1t/lib
+    windows:OPENSSL_LIB_PATH=C:/deps/openssl-1.0.2n
 }
 
 # use: qmake "USE_UPNP=1" ( enabled by default; default)
