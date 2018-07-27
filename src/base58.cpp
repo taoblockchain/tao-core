@@ -1,5 +1,4 @@
 // Copyright (c) 2014 The Bitcoin developers
-// Copyright (c) 2018 The Tao developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -48,7 +47,7 @@ bool DecodeBase58(const char* psz, std::vector<unsigned char>& vchRet) {
             break;
         }
         bnChar.setulong(p1 - pszBase58);
-        if (!BN_mul(bn.get(), bn.get(), bn58.get(), pctx))
+        if (!BN_mul(&bn, &bn, &bn58, pctx))
             throw bignum_error("DecodeBase58 : BN_mul failed");
         bn += bnChar;
     }
