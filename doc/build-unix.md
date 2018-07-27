@@ -58,6 +58,10 @@ If that doesn't work, you can install all boost development packages with:
 
     sudo apt-get install libboost-all-dev
 
+
+For ARM:
+    sudo apt-get install software-properties-common
+
 BerkeleyDB is required for the wallet. db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
 You can add the repository and install using the following commands:
 
