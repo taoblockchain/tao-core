@@ -35,6 +35,20 @@ Optional dependencies:
 
 For the versions used in the release, see [release-process.md](release-process.md) under *Fetch and build inputs*.
 
+For ARM (special thanks to patcrypt)
+--------
+
+    sudo nano /etc/dphys-swapfile
+
+Change the CONF_SWAPSIZE from 100 to:
+
+    CONF_SWAPSIZE=4096
+
+Then restart the service.
+
+    sudo /etc/init.d/dphys-swapfile stop
+    sudo /etc/init.d/dphys-swapfile start
+
 System requirements
 --------------------
 
@@ -60,6 +74,7 @@ If that doesn't work, you can install all boost development packages with:
 
 
 For ARM:
+
     sudo apt-get install software-properties-common libssl1.0-dev
 
 BerkeleyDB is required for the wallet. db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
