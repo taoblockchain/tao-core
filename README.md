@@ -18,7 +18,7 @@ For more information, see https://tao.network/index.html, or read the
 
 Building the wallet
 -------------------
-A simple guide for building the linux wallet is located [here](https://github.com/taoblockchain/tao-core/tree/master/doc/simple-build-unix.md)
+A simple guide for building the linux wallet is located [here](/doc/simple-build-unix.md)
 
 Autonode Generator
 ------------------
