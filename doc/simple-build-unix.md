@@ -2,7 +2,6 @@
 Don't be intimidated, this is really easy!\
 You don't need to understand how to use linux programs, copying and pasting the commands into your terminal should do the job.\
 I recommend you to download this document onto your computer so you can copy-paste the commands into your terminal rather than typing them by hand, don't want to make any mistakes!\
-
 Linux distributions this guide has been tested with: (as of 22/08/2018)
 
     Ubuntu 18.04.1 (Ubuntu Bionic)
