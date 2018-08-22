@@ -16,6 +16,10 @@ open source software which enables the use of this protocol.
 For more information, see https://tao.network/index.html, or read the
 [original whitepaper](https://tao.network/Welcome%20to%20Tao%20v1.4.pdf).
 
+Building the wallet
+-------------------
+A simple guide for building the linux wallet is located [here](https://github.com/taoblockchain/tao-core/tree/master/doc/simple-build-unix.md)
+
 Autonode Generator
 ------------------
 To automatically setup and install Linux Tao nodes, run the following command as root.
