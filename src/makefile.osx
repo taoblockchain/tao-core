@@ -21,7 +21,7 @@ INCLUDEPATHS= \
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
- -L"$(DEPSDIR)/Cellar/boost@1.57/1.57.0/lib" \
+ -L"$(DEPSDIR)/Cellar/boost@1.57/1.57.0//lib" \
  -L"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib" \
  -L"$(DEPSDIR)/opt/openssl/lib" \
  -L"$(DEPSDIR)/Cellar/gmp/6.1.2/lib"
