@@ -19,7 +19,7 @@ packages:
 - "bsdmainutils"
 reference_datetime: "2015-05-25 00:00:00"
 remotes:
-- "url": "https://github.com/SCDeveloper/Tao.git"
+- "url": "https://github.com/taoblockchain/tao-core.git"
   "dir": "tao"
 files:
 - "tao-deps-linux32-gitian.zip"

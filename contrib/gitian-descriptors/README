@@ -127,7 +127,7 @@ Add the gitian user to the superusers list:
 
 From your host machine ssh into the virtual machine:
 
-$ ssh gitian@localhost -p 22222
+$ s
 
 Switch to root user:
 $ sudo su
@@ -161,26 +161,26 @@ login again:
 $ ssh debian@localhost -p 22222
 
 $ git clone https://github.com/devrandom/gitian-builder.git
-$ git clone https://github.com/SCDeveloper/Tao.git tao
+$ git clone https://github.com/taoblockchain/tao-core.git tao
 
 $ cd gitian-builder
 
 $ ./bin/make-base-vm --lxc --arch amd64 --suite trusty
 $ ./bin/make-base-vm --lxc --arch i386 --suite trusty
 
-$ mkdir inputs;
-$ cd inputs;
-$ cp ../../tao/libs/secp256k1-master.zip .
-$ wget http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.9.20151008.tar.gz -Ominiupnpc-1.9.20151008.tar.gz;
-$ wget http://download.icu-project.org/files/icu4c/55.1/icu4c-55_1-src.tgz;
-$ wget http://download.oracle.com/berkeley-db/db-6.1.26.NC.tar.gz;
-$ wget http://prdownloads.sourceforge.net/libpng/libpng-1.6.18.tar.xz;
-$ wget http://zlib.net/zlib-1.2.8.tar.gz;
-$ wget https://fukuchi.org/works/qrencode/qrencode-3.4.4.tar.gz
-$ wget http://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.bz2/download -Oboost_1_59_0.tar.bz2;
-$ wget https://svn.boost.org/trac/boost/raw-attachment/ticket/7262/boost-mingw.patch
-$ wget http://www.openssl.org/source/openssl-1.0.2d.tar.gz
-$ wget http://download.qt.io/archive/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.tar.xz;
+mkdir inputs;
+cd inputs;
+wget https://github.com/bitcoin-core/secp256k1/archive/master.zip; && mv master.zip secp256k1-master.zip;
+wget http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.9.20151008.tar.gz -Ominiupnpc-1.9.20151008.tar.gz;
+wget http://download.icu-project.org/files/icu4c/55.1/icu4c-55_1-src.tgz;
+wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz;
+wget http://prdownloads.sourceforge.net/libpng/libpng-1.6.18.tar.xz;
+wget https://zlib.net/fossils/zlib-1.2.8.tar.gz;
+wget https://fukuchi.org/works/qrencode/qrencode-3.4.4.tar.gz
+wget http://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.bz2/download -Oboost_1_59_0.tar.bz2;
+wget https://svn.boost.org/trac/boost/raw-attachment/ticket/7262/boost-mingw.patch
+wget http://www.openssl.org/source/openssl-1.0.2d.tar.gz
+wget http://download.qt.io/archive/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.tar.xz;
 
 
 

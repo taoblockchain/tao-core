@@ -20,7 +20,7 @@ remotes: []
 files:
 - "openssl-1.0.2d.tar.gz"
 - "miniupnpc-1.9.20151008.tar.gz"
-- "db-6.1.26.NC.tar.gz"
+- "db-4.8.30.NC.tar.gz"
 - "zlib-1.2.8.tar.gz"
 - "libpng-1.6.18.tar.xz"
 - "boost_1_59_0.tar.bz2"
@@ -41,7 +41,7 @@ script: |
   # Integrity Check
   echo "3da5b3c572741fe2237bee1c3d36b11beef61172ac847132b045548b98d4df29  secp256k1-master.zip"          | sha256sum -c
   echo "e444ac3b587ce82709c4d0cfca1fe71f44f9fc433e9f946b12b9e1bfe667a633  miniupnpc-1.9.20151008.tar.gz" | sha256sum -c
-  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-6.1.26.NC.tar.gz"           | sha256sum -c
+  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-4.8.30.NC.tar.gz"           | sha256sum -c
   echo "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d  zlib-1.2.8.tar.gz"             | sha256sum -c
   echo "2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963  libpng-1.6.18.tar.xz"          | sha256sum -c
   echo "727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca  boost_1_59_0.tar.bz2"          | sha256sum -c
@@ -67,8 +67,8 @@ script: |
   cd ..
   #
   #
-  tar xzf db-6.1.26.NC.tar.gz
-  cd db-6.1.26.NC/build_unix
+  tar xzf db-4.8.30.NC.tar.gz
+  cd db-4.8.30.NC/build_unix
   #   need --with-pic to avoid relocation error in 64 bit builds
   ../dist/configure --prefix=$STAGING --enable-cxx --disable-shared --with-pic
   # Workaround to prevent re-configuring by make; make all files have a date in the past
