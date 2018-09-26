@@ -173,6 +173,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
         ui->labelImmature->setStyleSheet(whiteLabelQSS);
         ui->labelTotal->setStyleSheet(whiteLabelQSS);
     }
+    ui->frameDarksend->setVisible(false);
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex &index)
