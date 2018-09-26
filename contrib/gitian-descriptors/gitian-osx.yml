@@ -21,7 +21,7 @@ packages:
 - "genisoimage"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/SCDeveloper/Tao.git"
+- "url": "https://github.com/taoblockchain/tao-core.git"
   "dir": "tao"
 files:
 - "qt-osx-5.5.0-gitian.tar.xz"
