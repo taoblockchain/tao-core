@@ -15,14 +15,14 @@ INCLUDEPATHS= \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
  -I"$(DEPSDIR)/Cellar/boost@1.57/1.57.0/include" \
- -I"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/include" \
+ -I"$(DEPSDIR)/Cellar/berkeley-db@4/4.8.30/include" \
  -I"$(DEPSDIR)/opt/openssl/include" \
  -I"$(DEPSDIR)/Cellar/gmp/6.1.2/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
  -L"$(DEPSDIR)/Cellar/boost@1.57/1.57.0//lib" \
- -L"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib" \
+ -L"$(DEPSDIR)/Cellar/berkeley-db@4/4.8.30/lib" \
  -L"$(DEPSDIR)/opt/openssl/lib" \
  -L"$(DEPSDIR)/Cellar/gmp/6.1.2/lib"
 

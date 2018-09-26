@@ -308,11 +308,12 @@ void BitcoinGUI::createActions()
     alphanodeManagerAction->setToolTip(tr("Show Alpha Nodes status and configure your nodes."));
     alphanodeManagerAction->setCheckable(true);
     tabGroup->addAction(alphanodeManagerAction);
-*/
+
     messageAction = new QAction(QIcon(":/icons/edit"), tr("&Messages"), this);
     messageAction->setToolTip(tr("View and Send Encrypted messages"));
     messageAction->setCheckable(true);
     tabGroup->addAction(messageAction);
+*/
 
     blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
     blockAction->setToolTip(tr("Explore the BlockChain"));
