@@ -314,7 +314,6 @@ void BitcoinGUI::createActions()
     messageAction->setCheckable(true);
     tabGroup->addAction(messageAction);
 */
-
     blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
     blockAction->setToolTip(tr("Explore the BlockChain"));
     blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
@@ -343,10 +342,10 @@ void BitcoinGUI::createActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
-    connect(alphanodeManagerAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(alphanodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoAlphanodeManagerPage()));
-    connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(messageAction, SIGNAL(triggered()), this, SLOT(gotoMessagePage()));
+    //connect(alphanodeManagerAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    //connect(alphanodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoAlphanodeManagerPage()));
+    //connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    //connect(messageAction, SIGNAL(triggered()), this, SLOT(gotoMessagePage()));
 
     quitAction = new QAction(tr("E&xit"), this);
     quitAction->setToolTip(tr("Quit application"));
@@ -459,12 +458,13 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(sendCoinsAction);
     toolbar->addAction(historyAction);
     toolbar->addAction(addressBookAction);
+/*
     toolbar->addAction(alphanodeManagerAction);
 
     if (!fLiteMode){
         toolbar->addAction(messageAction);
     }
-
+*/
     toolbar->addAction(blockAction);
     //toolbar->addAction(TradingAction);
     netLabel = new QLabel();
@@ -926,11 +926,13 @@ void BitcoinGUI::clearWidgets()
 
 void BitcoinGUI::gotoAlphanodeManagerPage()
 {
+    /*
     alphanodeManagerAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(alphanodeManagerPage);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+    */
 }
 
 void BitcoinGUI::gotoBlockBrowser()
@@ -1020,12 +1022,14 @@ void BitcoinGUI::gotoVerifyMessageTab(QString addr)
 
 void BitcoinGUI::gotoMessagePage()
 {
+    /*
     messageAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(messagePage);
 
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), messagePage, SLOT(exportClicked()));
+    */
 }
 
 void BitcoinGUI::dragEnterEvent(QDragEnterEvent *event)

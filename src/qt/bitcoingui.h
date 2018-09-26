@@ -110,8 +110,8 @@ private:
     QAction *lockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
-    QAction *alphanodeManagerAction;
-    QAction *messageAction;
+//    QAction *alphanodeManagerAction;
+//    QAction *messageAction;
     QAction *blockAction;
     //QAction *TradingAction;
     QAction *showBackupsAction;
