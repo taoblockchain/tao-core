@@ -1,4 +1,4 @@
-Tao Core integration/staging tree
+Tao Core integration/staging tree ![Travis-CI](https://travis-ci.org/taoblockchain/tao-core.svg?branch=master)
 =====================================
 
 https://tao.network

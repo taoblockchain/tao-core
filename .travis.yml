@@ -19,6 +19,8 @@ addons:
     - libprotobuf-dev
     - libssl-dev
     - libgmp3-dev
+    - libevent-dev
+    - bsdmainutils
     - libqt5gui5
     - qtbase5-dev
     - libqt5dbus5
