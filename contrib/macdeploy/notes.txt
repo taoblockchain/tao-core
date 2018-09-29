@@ -24,4 +24,6 @@ Command arguments: Tao-Qt.app -add-qt-tr da,de,es,hu,ru,uk,zh_CN,zh_TW -dmg -fan
 After that you can start the deployment process through the menu with
 Build -> Deploy Project "tao-qt"
 
-contrib/macdeploy/macdeployqtplus Tao-Qt.app -add-qt-tr da,de,es,hu,ru,uk,zh_CN,zh_TW -dmg -fancy contrib/macdeploy/fancy.plist -verbose 2
+# contrib/macdeploy/macdeployqtplus Tao-Qt.app -add-qt-tr da,de,es,hu,ru,uk,zh_CN,zh_TW -dmg -fancy contrib/macdeploy/fancy.plist -verbose 2 -sign
+
+macdeployqt Tao-Qt.app -verbose=2 -codesign="Developer ID Application: Bryce Weiner"

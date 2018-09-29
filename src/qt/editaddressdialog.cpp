@@ -24,7 +24,7 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
         ui->addressEdit->setVisible(false);
         ui->stealthCB->setEnabled(true);
         ui->stealthCB->setVisible(true);
-        ui->stealthCB->setChecked(1);
+        ui->stealthCB->setChecked(false);
         break;
     case NewSendingAddress:
         setWindowTitle(tr("New sending address"));
