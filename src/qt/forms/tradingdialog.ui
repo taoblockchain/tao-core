@@ -704,7 +704,7 @@
             </font>
            </property>
            <property name="text">
-            <string>XTO Available:</string>
+            <string>TAO Available:</string>
            </property>
           </widget>
          </item>
@@ -4988,7 +4988,7 @@
           </font>
          </property>
          <property name="text">
-          <string>XTO Available:</string>
+          <string>TAO Available:</string>
          </property>
         </widget>
        </item>
