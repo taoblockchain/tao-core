@@ -1,0 +1,87 @@
+/* Demo css : This css is only for live demo */
+
+
+.demo-options {
+    position: fixed;
+    right: 0px;
+    top: 50%;
+    z-index: 9999;    
+    ul.demo-options-list {
+        padding: 0;
+        list-style: none;
+    }
+    .btn {
+        border-radius: 0;
+        color: #fff;
+        font-size: 1.2rem;
+        .la{
+            font-size: 1.8rem;
+        }
+    }
+    .btn-settings {
+        background: #a24ffe;
+    }
+    .btn-rtl-mode {
+        background: #27a7fe;
+        font-size: 12px;
+        padding: 12px 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    .btn-psd {
+        background: #27a7fe;
+        font-size: 12px;
+        padding: 12px 10px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    .btn-cart {
+        background: #ff6433;
+    }
+
+}
+
+/* fullscreen overlay */
+
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(50deg, #ff2f76, #8227f5);
+    overflow: auto;
+    z-index: 999999;
+    .btn-close{
+        color: #333;
+    }
+    .img-add-banner{
+        height: 125px;
+    }
+    .wrap {
+        color: #e9e9e9;
+        text-align: center;
+        max-width: 90%;
+        margin: 0 auto;
+        .fullscreen-overlay-open {
+            border-radius: 0;
+        }
+        .crypto-ico-demo {
+            .ico-demo-title {}
+            .ico-demo-sub-title {
+                color: #e2e2e2;
+            }
+            img {
+                box-shadow: 5px 5px 20px #13074a;
+                border: 4px solid rgba(255, 255, 255, 0.8);
+            }
+            .ico-demo-link {
+                border-radius: 2rem;
+            }
+        }
+        h6{
+            color: #fff;
+        }
+    }
+}

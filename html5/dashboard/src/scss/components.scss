@@ -1,0 +1,49 @@
+// ================================================================================================
+// 	File Name: components.scss
+// 	Description: Common components file to includ all theme specific custom components.
+// 	----------------------------------------------------------------------------------------------
+// 	Item Name: Crypto ICO - Cryptocurrency Website Landing Page HTML + Dashboard Template
+// 	Version: 1.0
+// 	Author: PIXINVENT
+// 	Author URL: http://www.themeforest.net/user/pixinvent
+// ================================================================================================
+
+// Variables
+// ------------------------------
+
+// Core variables and mixins
+@import "bootstrap/functions";
+@import "bootstrap/mixins";
+@import "bootstrap-extended/mixins";
+
+// Core variables and mixins overrides
+@import "core/variables/variables";
+@import "core/variables/components-variables";
+@import "core/mixins/transitions";
+
+// Overrides user variable
+@import "../../assets/scss/variables/variables";
+@import "../../assets/scss/variables/components-variables";
+
+// Perfect Scrollbar
+
+// Core
+// ------------------------------
+// layouts
+@import "core/layouts/content";
+@import "core/layouts/sidebar";
+//- @import "core/layouts/demo";  //- //- For demo only
+@import "core/layouts/footer";
+// menu
+@import "core/menu/navigation";
+
+// Components
+// ------------------------------
+@import "components/helper";
+@import "components/avatar";
+@import "components/search";
+
+// Plugins
+// ------------------------------
+@import "plugins/menu/perfect-scrollbar/ps-custom";
+@import "plugins/ui/breakpoints";

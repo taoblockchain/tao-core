@@ -1,0 +1,13 @@
+#account-register{
+	.card-account-left{
+		background: linear-gradient(90deg, #266db9, #153b71);
+		border-radius: 5px 0 0 5px;
+		.card-account-img{
+			position: relative;
+    		top: calc(200px - 125px);
+		}
+	}
+	.card-account-right{
+		border-radius: 0 5px 5px 0;
+	}
+}

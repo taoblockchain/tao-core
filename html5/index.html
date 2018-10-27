@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+	<p>Count numbers: <output id="result"></output></p>
+	<button onclick="startWorker()">Start Worker</button> 
+	<button onclick="stopWorker()">Stop Worker</button>
+
+	<script>
+	var w;
+
+	function startWorker() {
+	    if(typeof(Worker) !== "undefined") {
+	        if(typeof(wallet_info) == "undefined") {
+	            wallet_info = new Worker("js/workers/wallet_info.js");
+	        }
+	        wallet_info.onmessage = function(event) {
+	            document.getElementById("result").innerHTML = event.data;
+	        };
+	    } else {
+	        document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";
+	    }
+	}
+
+	function stopWorker() { 
+	    wallet_info.terminate();
+	    wallet_info = undefined;
+	}
+	</script>
+</body>
+
+</html>
