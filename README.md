@@ -14,7 +14,7 @@ issuing money are carried out collectively by the network. Tao Core is the name 
 open source software which enables the use of this protocol.
 
 For more information, see https://tao.network/index.html, or read the
-[original whitepaper](https://tao.network/Welcome%20to%20Tao%20v1.4.pdf).
+[original whitepaper](https://tao.network/XTORoadmapv0.3.pdf).
 
 Building the wallet
 -------------------
